@@ -27,7 +27,7 @@ function Login() {
     if(userInfo) {
       // const {prevPage} = navigate.history.location
       // console.log(prevPage);
-      navigate(-1)
+      navigate('/')
     }
   }, [userInfo, loading])
 

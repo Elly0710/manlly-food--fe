@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { NavLink } from 'react-router-dom'
 import { Cart } from '../../component'
+import { logout } from '../../redux/action/User'
 import logo from './../../assets/logo.png'
 
 import './header.css'
@@ -10,7 +11,7 @@ function Header() {
   const [cart, setCart] = useState(false)
   const [search, setSearch] = useState(false)
   const [nav, setNav] = useState(true)
-
+  const dispatch = useDispatch()
   const handleViewCart = () => setCart(!cart)
   const handleViewSearch = () => setSearch(!search)
 
@@ -25,7 +26,9 @@ function Header() {
       </div>
     );
   }
-
+  const handleLogOut = () => {
+    dispatch(logout());
+  }
   return (
     <header>
       <div className='container'>
@@ -51,7 +54,10 @@ function Header() {
               </label>
             </li>
             {user 
-              ? <li><label htmlFor='icon-2'><NavLink to='/myorder'><i className="fa-solid fa-right-to-bracket" title='Đăng nhập'></i></NavLink></label></li>
+              ? <>
+              <li><label htmlFor='icon-2'><NavLink to='/myorder'><i className="fa-solid fa-right-to-bracket" title='Đăng nhập'></i></NavLink></label></li>
+              <li><label htmlFor='icon-5'><NavLink onClick={handleLogOut}><i class="fa-solid fa-left-long"></i></NavLink></label></li>
+              </>
               : <li><label htmlFor='icon-2'><NavLink to='/login'><i className="fa-solid fa-right-to-bracket" title='MyOrder'></i></NavLink></label></li>
             }
 

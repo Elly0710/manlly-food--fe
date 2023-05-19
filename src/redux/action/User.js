@@ -33,5 +33,11 @@ const login = (input) => async (dispatch) => {
     })
   }
 }
-
-export { login }
+const logout = () => async (dispatch) => {
+  localStorage.removeItem('user')
+  dispatch({
+    type: 'log_out'
+  })
+  window.location.href = '/login'
+}
+export { login, logout }

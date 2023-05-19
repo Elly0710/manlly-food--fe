@@ -87,7 +87,7 @@ const Register = () => {
         </div>
           
       </div>
-      
+
       <div className='register-button'>
       <button className='button_view'>Đăng ký</button>
       </div>
